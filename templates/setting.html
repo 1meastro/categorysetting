@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Settings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <!--Top Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">GenLinked (Beta)</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            
+            <li class="nav-item ">
+              
+              <a class="nav-link" href="/">Home </a>
+                <!-- <span class="sr-only">(current)</span> -->
+              
+            </li>
+            
+            <li class="nav-item ">
+              
+              <a class="nav-link" href="/categories/scifi/blog">Blog </a>
+              
+            </li>
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    <form action="">
+        <h1 class="shape">Category Setting</h1>
+        <div class="shape">
+            <h2>Category Pages</h2>
+            <div id="dynamicInput">
+                <p>Connect 6 other Categories that relate to your Category.  <input type="button" class="btn btn-outline-primary" value="+" onClick="addInput('dynamicInput');"></p>
+           </div>
+        </div>
+        <div class="shape">
+            <h2>Category Image</h2>
+            <input type="file" id="img" name="image" accept="image/*" >
+        </div>
+        <div class="shape">
+            <h2>Category Rules</h2>
+            <textarea name="Rules" cols="10" rows="10" placeholder="List the rules of the category that are unique to this category."></textarea>
+        </div>
+        <div class="shape">
+            <h2>Category Videos</h2>
+            <input class="svid" type="text" size="10" name="Name">  <button class="btn btn-primary">Search</button>
+        </div>
+        <br>
+        <input class="bsubmit btn btn-primary" type="submit">
+    </form>
+    <script>
+        var counter = 0;
+        var limit = 6;
+        function addInput(divName){
+            if (counter == limit)  {
+                alert("You have reached the limit of adding " + counter + " inputs");
+            }
+            else {
+                var newdiv = document.createElement('div');
+                newdiv.innerHTML = "<div class='section2'>Category " + (counter + 1) + " <br><input type='text' name='myInputs[]'></div>";
+                document.getElementById(divName).appendChild(newdiv);
+                counter++;
+            }
+        }
+    </script>
+</body>
+</html>
